@@ -8,5 +8,15 @@ class MyClass {
         console.log("Today is " + this.weather + ".");
     }
 }
-let myData = new MyClass("Milos", "rainy");
+class MySubClass extends MyClass {
+    constructor(name, weather, city) {
+        super(name, weather);
+        this.city = city;
+    }
+    printMessages() {
+        super.printMessages();
+        console.log(`You are in ${this.city}`);
+    }
+}
+let myData = new MySubClass("Adam", "sunny", "London");
 myData.printMessages();
