@@ -2,7 +2,7 @@ export class TempConverter {
     static convertFtoC(temp: number | string): string {
         let value: number = (<number>temp).toPrecision
             ? <number>temp : parseFloat(<string>temp);
-        return ((parseFloat(value.toPrecision(2)) - 32) / 1.8).toFixed(1);
+        return TempConverter.performCalculation(value).toFixed(1);
     }
 
     static convertFtoC_version2(temp: any): string {
@@ -14,6 +14,9 @@ export class TempConverter {
         } else {
             value = 0;
         }
-        return ((parseFloat(value.toPrecision(2)) - 32) / 1.8).toFixed(1);
+        return TempConverter.performCalculation(value).toFixed(1);
+    }
+    private static performCalculation(value: number): number {
+        return (parseFloat(value.toPrecision(2)) - 32) / 1.8;
     }
 }

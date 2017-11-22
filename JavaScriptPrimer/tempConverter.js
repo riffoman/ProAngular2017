@@ -5,7 +5,7 @@ var TempConverter = (function () {
     TempConverter.convertFtoC = function (temp) {
         var value = temp.toPrecision
             ? temp : parseFloat(temp);
-        return ((parseFloat(value.toPrecision(2)) - 32) / 1.8).toFixed(1);
+        return TempConverter.performCalculation(value).toFixed(1);
     };
     TempConverter.convertFtoC_version2 = function (temp) {
         var value;
@@ -18,7 +18,10 @@ var TempConverter = (function () {
         else {
             value = 0;
         }
-        return ((parseFloat(value.toPrecision(2)) - 32) / 1.8).toFixed(1);
+        return TempConverter.performCalculation(value).toFixed(1);
+    };
+    TempConverter.performCalculation = function (value) {
+        return (parseFloat(value.toPrecision(2)) - 32) / 1.8;
     };
     return TempConverter;
 }());
