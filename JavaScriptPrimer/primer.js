@@ -1,11 +1,9 @@
 "use strict";
-var NameAndWeather_1 = require("./modules/NameAndWeather");
-var DuplicateName_1 = require("./modules/DuplicateName");
 var tempConverter_1 = require("./tempConverter");
-var name = new NameAndWeather_1.Name("Adam", "Freeman");
-var loc = new NameAndWeather_1.WeatherLocation("raining", "London");
-var other = new DuplicateName_1.Name();
-var cTemp = tempConverter_1.TempConverter.convertFtoC(38);
-console.log(name.nameMessage);
-console.log(loc.weatherMessage);
-console.log("The temp is " + cTemp + "C");
+var cities = {};
+cities["London"] = ["raining", tempConverter_1.TempConverter.convertFtoC("38")];
+cities["Paris"] = ["sunny", tempConverter_1.TempConverter.convertFtoC("52")];
+cities["Berlin"] = ["snowing", tempConverter_1.TempConverter.convertFtoC("23")];
+for (var key in cities) {
+    console.log(key + ": " + cities[key][0] + ", " + cities[key][1]);
+}

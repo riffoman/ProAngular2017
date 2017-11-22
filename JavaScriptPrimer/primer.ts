@@ -1,10 +1,10 @@
 import { Name, WeatherLocation } from "./modules/NameAndWeather";
 import { Name as OtherName } from "./modules/DuplicateName";
 import { TempConverter } from "./tempConverter";
-let name = new Name("Adam", "Freeman");
-let loc = new WeatherLocation("raining", "London");
-let other = new OtherName();
-let cTemp = TempConverter.convertFtoC(38);
-console.log(name.nameMessage);
-console.log(loc.weatherMessage);
-console.log(`The temp is ${cTemp}C`);
+let cities: { [index: string]: [string, string] } = {};
+cities["London"] = ["raining", TempConverter.convertFtoC("38")];
+cities["Paris"] = ["sunny", TempConverter.convertFtoC("52")];
+cities["Berlin"] = ["snowing", TempConverter.convertFtoC("23")];
+for (let key in cities) {
+    console.log(`${key}: ${cities[key][0]}, ${cities[key][1]}`);
+}
